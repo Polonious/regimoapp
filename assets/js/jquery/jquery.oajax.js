@@ -3,22 +3,12 @@
  * Perform an asynchronous HTTP (Ajax) request with OAuth
  *
  * @copyright 2012 Polonious Pty Ltd.
- * @website https://github.com/polonious/jquery-oauth/
+ * @website https://github.com/polonious/jquery-oajax/
  * @author Ted Liang <tedliang[dot]email[at]gmail[dot]com>
  * @version 1.0
  *
  * Licensed under the MIT License
  * http://www.opensource.org/licenses/mit-license.php
- *
- * Examples:
- * Init
- * 	$.oajax.init({baseUrl:"http://regimo.poloniouslive.com", client:"cGhvbmVnYXBAcmVnaW1vOnJnbXBnMTBwc3c=", login: function(){console.log("open login dialog...");}});
- * Ajax call
- * 	$.oajax("/rest/user/profile").done(function(data){console.log(data);}).fail(function(jqXHR, textStatus){console.log(textStatus);console.log(jqXHR.responseText);});
- * 	$.oajax.post();
- * Login
- * 	$.oajax.login("usernameFromInput", "passwordFromInput").done(function(data){console.log("login successful");console.log(data);}).fail(function(jqXHR, textStatus){console.log("login "+textStatus);console.log(jqXHR.responseText);});
- *
  */
 (function($) {
 
@@ -151,7 +141,7 @@
 	omethod = function(xhrMethod, hasData){
 		return hasData ?
 			function(url, data, dataType){
-				options = parseOptions(url);
+				var options = parseOptions(url);
 				options[method.xhrMethod] = xhrMethod;
 				if(data){
 					options.data = data;
